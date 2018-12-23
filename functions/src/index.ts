@@ -1,17 +1,18 @@
-import * as functions from 'firebase-functions';
+const functions = require("firebase-functions");
+const express = require("express");
+const app = express();
 
-// // Start writing Firebase Functions
-// // https://firebase.google.com/docs/functions/typescript
-//
-export const helloWorld = functions.https.onRequest((request, response) => {
-  response.send("こんにちはファイアベース！！");
- });
+app.post('/user', (request, response) => {
+    response.send('Hello Mitani');
+});
 
- export const Hukuoka = functions.https.onRequest((request, response) => {
-     response.send("nasitoーto");
- });
+app.post('/group', (request, response) => {
+    response.send('Mitanisan');
+});
 
- export const Osaka = functions.https.onRequest((request, response) =>{
-     response.send("なにしてんねん");
- });
+app.post('/team', (request, response) => {
+    response.send('Watarusan');
+});
 
+const api = functions.https.onRequest(app);
+module.exports = { api };
